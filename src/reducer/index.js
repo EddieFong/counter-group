@@ -13,23 +13,39 @@ export default (state = initialState, { type, payload }) => {
     case "COUNTERSUM":
       return { ...state, counterSum: state.counterSum + payload }
     case "GENERATE_COUNTERS":
-      let result = {
-        ...state,
-        counterItems: new Array(payload)
-          .fill(0)
-          .map(() => ({ count: 0, id: generateID() }))
+      {
+        let result = {
+          ...state,
+          counterItems: new Array(payload)
+            .fill(0)
+            .map(() => ({ count: 0, id: generateID() }))
+        }
+        return result
       }
-      return result
     case "INCREASE_ONE_COUNTER":
-    console.log(payload)
-      let counterItems = state.counterItems.map(counterItem => {
+      {
+        console.log(payload)
+        let counterItems = state.counterItems.map(counterItem => {
           if (counterItem.id === payload.id) {
             return { id: counterItem.id, count: counterItem.count + payload.changedNum };
           } else {
             return counterItem;
           }
         });
-        return {...state, counterItems}
+        return { ...state, counterItems }
+      }
+    case "DECREASE_ONE_COUNTER":
+      {
+        console.log(payload)
+        let counterItems = state.counterItems.map(counterItem => {
+          if (counterItem.id === payload.id) {
+            return { id: counterItem.id, count: counterItem.count - payload.changedNum };
+          } else {
+            return counterItem;
+          }
+        });
+        return { ...state, counterItems }
+      }
     default:
       return state
   }
