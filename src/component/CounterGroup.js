@@ -41,15 +41,6 @@ class CounterGroup extends Component {
   };
 
   decreaseNumber = (changedNum, id) => {
-    // const changedArr = this.props.counterArr.map(counterItem => {
-    //   if (counterItem.id === id) {
-    //     return { id: id, count: counterItem.count - changedNum };
-    //   } else {
-    //     return counterItem;
-    //   }
-    // });
-
-    // this.setState({ counterArr: [...changedArr] });
     this.props.dispatch({ //this dispatch will wuto inject by connect() method
       type: "DECREASE_ONE_COUNTER",
       payload: {id, changedNum}

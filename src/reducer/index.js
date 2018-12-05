@@ -24,7 +24,6 @@ export default (state = initialState, { type, payload }) => {
       }
     case "INCREASE_ONE_COUNTER":
       {
-        console.log(payload)
         let counterItems = state.counterItems.map(counterItem => {
           if (counterItem.id === payload.id) {
             return { id: counterItem.id, count: counterItem.count + payload.changedNum };
@@ -36,7 +35,6 @@ export default (state = initialState, { type, payload }) => {
       }
     case "DECREASE_ONE_COUNTER":
       {
-        console.log(payload)
         let counterItems = state.counterItems.map(counterItem => {
           if (counterItem.id === payload.id) {
             return { id: counterItem.id, count: counterItem.count - payload.changedNum };
