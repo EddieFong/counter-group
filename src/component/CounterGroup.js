@@ -33,19 +33,15 @@ class CounterGroup extends Component {
   };
 
   increaseNumber = (changedNum, id) => {
-    const changedArr = this.state.counterArr.map(counterItem => {
-      if (counterItem.id === id) {
-        return { id: id, count: counterItem.count + changedNum };
-      } else {
-        return counterItem;
-      }
+    this.props.dispatch({ //this dispatch will wuto inject by connect() method
+      type: "INCREASE_ONE_COUNTER",
+      payload: {id, changedNum}
     });
 
-    this.setState({ counterArr: [...changedArr] });
   };
 
   decreaseNumber = (changedNum, id) => {
-    const changedArr = this.state.counterArr.map(counterItem => {
+    const changedArr = this.props.counterArr.map(counterItem => {
       if (counterItem.id === id) {
         return { id: id, count: counterItem.count - changedNum };
       } else {
@@ -57,6 +53,7 @@ class CounterGroup extends Component {
   };
 
   render() {
+    console.log(this.props.counterItems)
     return (
       <div>
         {this.props.counterItems.map(counterItem => (
