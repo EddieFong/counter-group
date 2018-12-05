@@ -14,6 +14,7 @@ export default (state = initialState, { type, payload }) => {
       return { ...state, counterSum: state.counterSum + payload }
     case "GENERATE_COUNTERS":
       {
+        state.counterSum = 0
         let result = {
           ...state,
           counterItems: new Array(payload)

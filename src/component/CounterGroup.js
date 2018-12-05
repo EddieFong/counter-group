@@ -16,11 +16,9 @@ class CounterGroup extends Component {
   };
 
   regenrateCounters = () => {
-    this.setState({
-      counterArr: new Array(parseInt(this.refs.countInput.value))
-        .fill(0)
-        .map(() => ({ count: 0, id: this.generateID() })),
-      counterSum: 0
+    this.props.dispatch({ //this dispatch will wuto inject by connect() method
+      type: "GENERATE_COUNTERS",
+      payload: parseInt(parseInt(this.refs.countInput.value))
     });
   };
 
